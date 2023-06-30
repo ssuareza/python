@@ -1,0 +1,16 @@
+@url=http://localhost:5000
+@api_key=apikey
+@text="He are moving here"
+
+### correct
+POST {{url}}/
+Content-Type: application/json
+Authorization: Bearer {{api_key}}
+
+{
+  "text": {{text}}
+}
+
+### health
+GET {{url}}/healthz
+Content-Type: application/json
