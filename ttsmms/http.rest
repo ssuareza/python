@@ -1,0 +1,34 @@
+@url=http://localhost:5050
+@api_key=apikey
+
+### healthz
+GET {{url}}/healthz
+Content-Type: application/json
+
+### auth
+GET {{url}}/auth
+Content-Type: application/json
+Authorization: Bearer {{api_key}}
+
+### auth no credentials
+GET {{url}}/auth
+Content-Type: application/json
+
+### tts
+POST {{url}}/
+Content-Type: application/json
+Authorization: Bearer {{api_key}}
+
+{
+  "text": "this is a long text",
+  "lang": "eng"
+}
+
+### tts invalid
+POST {{url}}/
+Content-Type: application/json
+Authorization: Bearer {{api_key}}
+
+{
+  "lang": "eng"
+}

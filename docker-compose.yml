@@ -1,0 +1,38 @@
+---
+version: "3.7"
+
+x-common:
+  &common
+  tty: true
+  stdin_open: true
+
+services:
+  grammar:
+    container_name: grammar
+    build:
+      context: ./
+      dockerfile: grammar/Dockerfile
+    volumes:
+      - ./grammar/:/app
+      - grammar:/root/.local
+    env_file:
+      - grammar/env.dev
+    ports:
+      - 5050:5050
+
+  ttsmms:
+    <<: *common
+    build:
+      context: ./
+      dockerfile: ttsmms/Dockerfile
+    volumes:
+      - ./ttsmms:/app
+      - ttsmms:/root/.local
+    env_file:
+      - ttsmms/env.dev
+    ports:
+      - 5000:5000
+
+volumes:
+  grammar:
+  ttsmms:
